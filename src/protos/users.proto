@@ -1,0 +1,101 @@
+syntax = "proto3";
+
+package users;
+
+service UsersService {
+  rpc GetUser(GetUserRequest) returns (GetUserResponse) {}
+  rpc CreateUser(CreateUserRequest) returns (CreateUserResponse) {}
+}
+
+message GetUserRequest {
+  string id = 1;          // Added id field
+  string name = 2;
+  string email = 3;
+  string password = 4;
+  string createdDate = 5;
+  string updatedDate = 6;
+}
+
+message GetUserResponse {
+  string id = 1;          // Added id field
+  string name = 2;
+  string email = 3;
+  string password = 4;
+  string createdDate = 5;
+  string updatedDate = 6;
+}
+
+message CreateUserRequest {
+  string id = 1;          // Added id field
+  string name = 2;
+  string email = 3;
+  string password = 4;
+  string createdDate = 5;
+  string updatedDate = 6;
+}
+
+message CreateUserResponse {
+  string id = 1;          // Added id field
+  string name = 2;
+  string email = 3;
+  string password = 4;
+  string createdDate = 5;
+  string updatedDate = 6;
+}
+
+service TaskService {
+  rpc CreateTask(CreateTaskRequest) returns (CreateTaskResponse);
+  rpc GetTask(GetTaskRequest) returns (GetTaskResponse);
+  rpc UpdateTask(UpdateTaskRequest) returns (UpdateTaskResponse);
+  rpc DeleteTask(DeleteTaskRequest) returns (DeleteTaskResponse);
+  rpc GetAllTasks(GetAllTasksRequest) returns (GetAllTasksResponse);
+}
+
+message Task {
+  string id = 1;          // Added id field
+  string title = 2;
+  string description = 3;
+  string status = 4;
+  string priority = 5;   // Added priority field
+  string userId = 6;      // Added userId field
+}
+
+message CreateTaskRequest {
+  Task task = 1;
+}
+
+message CreateTaskResponse {
+  Task task = 1;
+}
+
+message GetTaskRequest {
+  string id = 1;          // Added id field
+}
+
+message GetTaskResponse {
+  Task task = 1;
+}
+
+message UpdateTaskRequest {
+  Task task = 1;
+}
+
+message UpdateTaskResponse {
+  Task task = 1;
+}
+
+message DeleteTaskRequest {
+  string id = 1;          // Added id field
+}
+
+message DeleteTaskResponse {
+  bool success = 1;
+}
+
+message GetAllTasksRequest {
+  string userId = 1;      // Added userId field to filter tasks by user
+}
+
+message GetAllTasksResponse {
+  repeated Task tasks = 1;
+}

@@ -1,0 +1,26 @@
+version: '3.8'
+
+services:
+  bff:
+    build:
+      context: ./bff  # Path to your BFF directory
+      dockerfile: Dockerfile
+    ports:
+      - '4000:4000'
+    depends_on:
+      - redis
+    environment:
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+
+  microservice:
+    build:
+      context: ./microservice  # Path to your microservice directory
+      dockerfile: Dockerfile
+    ports:
+      - '50051:50051'
+
+  redis:
+    image: redis:alpine
+    ports:
+      - '6379:6379'
