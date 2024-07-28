@@ -4,19 +4,21 @@ import { ClientGrpc } from '@nestjs/microservices';
 import { Cache } from 'cache-manager';
 import { Observable } from 'rxjs';
 import { 
-  CreateTaskRequest, 
-  CreateTaskResponse, 
-  DeleteTaskRequest, 
-  DeleteTaskResponse, 
-  GetAllTasksRequest, 
-  GetAllTasksResponse, 
-  GetTaskRequest, 
-  GetTaskResponse, 
-  TaskServiceClient, 
-  UpdateTaskRequest, 
-  UpdateTaskResponse 
+  CreateTaskRequest,
+  CreateTaskResponse,
+  DeleteTaskRequest,
+  DeleteTaskResponse,
+  GetAllTasksRequest,
+  GetAllTasksResponse,
+  GetTaskRequest,
+  GetTaskResponse,
+  TaskServiceClient,
+  UpdateTaskRequest,
+  UpdateTaskResponse
 } from 'src/protos/interface/users';
 import { Status } from 'src/types/enum';
+import { EventGateWay } from "src/utilities/event.gateway";
+
 
 @Injectable()
 export class TaskService implements OnModuleInit {
@@ -25,6 +27,8 @@ export class TaskService implements OnModuleInit {
 
   constructor(
     @Inject('USERS_SERVICE') private readonly client: ClientGrpc,  
+  private readonly eventGateway: EventGateWay
+
   ) {}
 
   onModuleInit() {
@@ -32,9 +36,11 @@ export class TaskService implements OnModuleInit {
   }
 
   // Method to handle task creation
-  createTask(createTaskRequest: CreateTaskRequest): Observable<CreateTaskResponse> {
+   createTask(createTaskRequest: CreateTaskRequest): Observable<CreateTaskResponse> {
+  const data = this.taskService.createTask(createTaskRequest);
+ 
    
-    return this.taskService.createTask(createTaskRequest);
+   return data
   }
 
   // Method to handle task update
@@ -86,7 +92,7 @@ export class TaskService implements OnModuleInit {
     },
     {
       name: "In Preview",
-      items: tasks.filter(task => task.status == Status.Done).map(task => ({
+      items: tasks.filter(task => task.status == Status.InPreview).map(task => ({
         id: task.id,
         title: task.title,
         description: task.description,
@@ -96,7 +102,7 @@ export class TaskService implements OnModuleInit {
     },
     {
       name: "Done",
-      items: tasks.filter(task => task.status == Status.InPreview).map(task => ({
+      items: tasks.filter(task => task.status == Status.Done).map(task => ({
         id: task.id,
         title: task.title,
         description: task.description,

@@ -21,8 +21,7 @@ export class AppController implements OnModuleInit {
 
   @Get('users')
   async getUsers() {
-    console.log("heree");
-    
+
     return this.usersService.GetUser({ email: 'Jon@gmail.com' });
   }
 }
