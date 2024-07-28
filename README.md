@@ -27,35 +27,25 @@ Frontend can be built with any framework (e.g., React, Angular,Next)
 Installation
 To get started with the project, follow these steps:
 
-bash
-Copy code
+
 # Clone the repository
 $ git clone <repository-url>
 
 # Navigate to the project directory
-$ cd task-management-backend
+$ cd task-api-gateway
 
 # Install dependencies
 $ yarn install
 Configuration
 Ensure you have a .env file in the root of the project with the following environment variables:
 
-plaintext
-Copy code
-DB_TYPE=mysql
-DB_HOST=localhost
-DB_PORT=3306
-DB_USERNAME=root
-DB_PASSWORD=password
-DB_DATABASE='db'
 
 SOCKET_PORT=4000
 FRONTEND_URL=http://localhost:3000
 Running the app
 To run the application, use the following commands:
 
-bash
-Copy code
+
 # development
 $ yarn run start
 
@@ -66,11 +56,6 @@ $ yarn run start:dev
 $ yarn run start:prod
 Testing
 The project includes unit and end-to-end tests:
-
-bash
-Copy code
-# unit tests
-$ yarn run test
 
 
 
