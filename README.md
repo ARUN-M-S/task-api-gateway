@@ -15,15 +15,15 @@
 <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
 <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
 </p>
-Description
+Description:   
 This project is a task management application built using the Nest framework. It provides a comprehensive solution for managing tasks, including creating, updating, deleting, and retrieving tasks. The application supports real-time updates through WebSockets.
 
-Features
+Features: 
 Create, update, delete, and retrieve tasks
 Real-time task updates using WebSockets
 Organized task management with different statuses (To Do, In Progress, In Review, Done)
 Backend built with NestJS
-Frontend can be built with any framework (e.g., React, Angular)
+Frontend can be built with any framework (e.g., React, Angular,Next)
 Installation
 To get started with the project, follow these steps:
 
@@ -72,21 +72,14 @@ Copy code
 # unit tests
 $ yarn run test
 
-# e2e tests
-$ yarn run test:e2e
 
-# test coverage
-$ yarn run test:cov
-Usage
-Once the application is running, you can use any API client (e.g., Postman) or the frontend application to interact with the API. The WebSocket server runs on the specified port and listens for connections to provide real-time updates.
 
 Support
 Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please read more here.
 
 Stay in touch
-Author - Kamil Myśliwiec
-Website - https://nestjs.com
-Twitter - @nestframework
+Author - Arun M S
+
 License
 Nest is MIT licensed.
 
